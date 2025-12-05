@@ -10,8 +10,8 @@ A robust, desktop-based CRUD application designed to streamline retail inventory
 
 ## 📸 Screenshots
 
-![App Screenshot](screenshot.png)
-*(Note: Upload a screenshot of your app here)*
+![App Screenshot] <img width="994" height="754" alt="image" src="https://github.com/user-attachments/assets/12601e56-87f7-4127-9828-728930518e1b" />
+
 
 ---
 
@@ -62,6 +62,8 @@ void MainWindow::loadDataFromFile() {
     }
     file.close();
 }
+```
+
 ⚙️ Installation & Build
 To run this project on your machine:
 
