@@ -64,12 +64,12 @@ void MainWindow::loadDataFromFile() {
 }
 ```
 
-###⚙️ Installation & Build
+### ⚙️ Installation & Build
 To run this project on your machine:
 
-####Prerequisites: Install Qt Creator and Qt 6.
+#### Prerequisites: Install Qt Creator and Qt 6.
 
-####Clone the Repo:
+#### Clone the Repo:
 
 Bash
 
@@ -82,7 +82,7 @@ Select File > Open File or Project.
 
 Choose the InventoryManager.pro (or CMakeLists.txt) file.
 
-###Build & Run:
+### Build & Run:
 
 Select your Kit (e.g., Desktop Qt 6.x MinGW).
 
@@ -95,5 +95,5 @@ Database Migration: Upgrade from .txt files to SQLite for better scalability.
 
 Network Sync: Implement QNetworkAccessManager to sync inventory with a remote server.
 
-###👤 Author
+### 👤 Author
 Aryan 
