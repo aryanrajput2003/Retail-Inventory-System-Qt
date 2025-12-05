@@ -6,7 +6,7 @@
 #include <QTableWidgetItem>
 #include <fstream>
 #include <vector>
-#include <algorithm> // Needed for string replacement
+#include <algorithm> 
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -30,17 +30,16 @@ public:
 private slots:
     void on_btnAdd_clicked();
     void on_btnDelete_clicked();
-    void on_btnSearch_clicked(); // NEW
-    void on_btnUpdate_clicked(); // NEW
-
+    void on_btnSearch_clicked(); 
+    void on_btnUpdate_clicked(); 
     void on_btnExit_clicked();
 
 private:
     Ui::MainWindow *ui;
 
-    // Helpers
     void loadDataFromFile();
     void saveToFile(const Product &p);
     void rewriteFile(const std::vector<Product> &allProducts);
 };
-#endif // MAINWINDOW_H
+#endif 
+
