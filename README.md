@@ -74,7 +74,7 @@ To run this project on your machine:
 Bash
 
 git clone ([https://github.com/YOUR_USERNAME/InventoryManager.git](https://github.com/aryanrajput2003/Retail-Inventory-System-Qt))
-Open Project:
+#### Open Project:
 
 Open Qt Creator.
 
