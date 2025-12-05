@@ -97,3 +97,4 @@ Multi-threading: Move file I/O operations to a separate QThread to prevent UI fr
 
 ### 👤 Author
 Aryan Rajput
+[LinkedIn](https://www.linkedin.com/in/aryan-rajput-113aa81aa/)
