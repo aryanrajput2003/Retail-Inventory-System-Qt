@@ -9,11 +9,9 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
-    // Setup Table Columns
     ui->tableInventory->setColumnCount(4);
     ui->tableInventory->setHorizontalHeaderLabels({"ID", "Name", "Qty", "Price"});
 
-    // Load data on start
     loadDataFromFile();
 }
 
@@ -22,7 +20,6 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-// === BUTTON: ADD PRODUCT ===
 void MainWindow::on_btnAdd_clicked() {
     int id = ui->inputId->text().toInt();
     string name = ui->inputName->text().toStdString();
@@ -34,8 +31,6 @@ void MainWindow::on_btnAdd_clicked() {
         return;
     }
 
-    // === NEW: REPLACING SPACES WITH UNDERSCORES ===
-    // This matches your original logic: "if (product_name[i] == ' ') ..."
     std::replace(name.begin(), name.end(), ' ', '_');
 
     Product p = {id, name, qty, price};
@@ -43,14 +38,12 @@ void MainWindow::on_btnAdd_clicked() {
 
     loadDataFromFile();
 
-    // Clear inputs
     ui->inputId->clear();
     ui->inputName->clear();
     ui->inputQty->setValue(0);
     ui->inputPrice->setValue(0.0);
 }
 
-// === BUTTON: UPDATE PRODUCT (NEW) ===
 void MainWindow::on_btnUpdate_clicked() {
     int targetId = ui->inputId->text().toInt();
     if(targetId == 0) {
@@ -63,10 +56,8 @@ void MainWindow::on_btnUpdate_clicked() {
     Product p;
     bool found = false;
 
-    // Read all products
     while(file >> p.id >> p.name >> p.quantity >> p.price) {
         if(p.id == targetId) {
-            // Found it! Update with NEW data from UI
             found = true;
             p.name = ui->inputName->text().toStdString();
             std::replace(p.name.begin(), p.name.end(), ' ', '_'); // Apply underscore logic
@@ -78,32 +69,29 @@ void MainWindow::on_btnUpdate_clicked() {
     file.close();
 
     if(found) {
-        rewriteFile(products); // Save changes
-        loadDataFromFile();    // Refresh table
+        rewriteFile(products); 
+        loadDataFromFile();  
         QMessageBox::information(this, "Success", "Product Updated!");
     } else {
         QMessageBox::warning(this, "Error", "ID not found. Cannot Update.");
     }
 }
 
-// === BUTTON: SEARCH PRODUCT (NEW) ===
 void MainWindow::on_btnSearch_clicked() {
     int searchId = ui->inputId->text().toInt();
 
-    // If ID is 0 or empty, just show everything (Reset view)
     if(searchId == 0) {
         loadDataFromFile();
         return;
     }
 
-    ui->tableInventory->setRowCount(0); // Clear table
+    ui->tableInventory->setRowCount(0); 
     ifstream file("store_data.txt");
     Product p;
     bool found = false;
 
     while(file >> p.id >> p.name >> p.quantity >> p.price) {
         if(p.id == searchId) {
-            // Found the specific item, add only THIS one to table
             int row = ui->tableInventory->rowCount();
             ui->tableInventory->insertRow(row);
             ui->tableInventory->setItem(row, 0, new QTableWidgetItem(QString::number(p.id)));
@@ -117,11 +105,10 @@ void MainWindow::on_btnSearch_clicked() {
 
     if(!found) {
         QMessageBox::information(this, "Search", "Product Not Found.");
-        loadDataFromFile(); // Reset to show all
+        loadDataFromFile(); 
     }
 }
 
-// === BUTTON: DELETE PRODUCT ===
 void MainWindow::on_btnDelete_clicked() {
     int targetId = ui->inputId->text().toInt();
     if(targetId == 0) return;
@@ -146,7 +133,6 @@ void MainWindow::on_btnDelete_clicked() {
     }
 }
 
-// === FILE HELPERS ===
 void MainWindow::saveToFile(const Product &p) {
     ofstream file("store_data.txt", ios::app);
     if(file.is_open()) {
@@ -181,7 +167,6 @@ void MainWindow::loadDataFromFile() {
 }
 void MainWindow::on_btnExit_clicked()
 {
-    // Ask the user "Are you sure?"
     QMessageBox::StandardButton reply;
     reply = QMessageBox::question(this, "Exit", "Are you sure you want to close the application?",
                                   QMessageBox::Yes|QMessageBox::No);
@@ -190,4 +175,5 @@ void MainWindow::on_btnExit_clicked()
         QApplication::quit();
     }
 }
+
 
