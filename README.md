@@ -88,12 +88,12 @@ Select your Kit (e.g., Desktop Qt 6.x MinGW).
 
 Press Ctrl + R (Run).
 
-🔮 Future Improvements
+#### 🔮 Future Improvements
 Multi-threading: Move file I/O operations to a separate QThread to prevent UI freezing during large data writes.
 
-Database Migration: Upgrade from .txt files to SQLite for better scalability.
+#### Database Migration: Upgrade from .txt files to SQLite for better scalability.
 
-Network Sync: Implement QNetworkAccessManager to sync inventory with a remote server.
+#### Network Sync: Implement QNetworkAccessManager to sync inventory with a remote server.
 
 ### 👤 Author
-Aryan 
+Aryan Rajput
